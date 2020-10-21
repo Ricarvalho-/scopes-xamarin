@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "766591001910",
+    "firebase_url": "https://scopes-8fa88.firebaseio.com",
+    "project_id": "scopes-8fa88",
+    "storage_bucket": "scopes-8fa88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766591001910:android:7023021cce283f78723f97",
+        "android_client_info": {
+          "package_name": "com.ricarvalho.scopes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766591001910-a2af13j13egkuuh55rone09avrjd2m0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtDApslMTyfvMQdI10JMp59iCy3rW7_JQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766591001910-a2af13j13egkuuh55rone09avrjd2m0i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
