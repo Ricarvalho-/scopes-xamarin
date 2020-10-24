@@ -134,4 +134,9 @@
       <Name>Scopes</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\edit.png" />
+    <BundleResource Include="Resources\delete.png" />
+  </ItemGroup>
 </Project>
