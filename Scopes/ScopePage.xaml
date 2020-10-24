@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Scopes.ScopePage"
+             Title="{Binding Object.Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New goal"
+                     IconImageSource="add.png"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="OnAddClicked" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <ProgressBar x:Name="DoneProgressBar"
+                     IsVisible="false" />
+
+        <ListView x:Name="GoalsListView"
+                  HasUnevenRows="True"
+                  SelectionMode="None"
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="OnGoalsRefresh">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <ContentView BackgroundColor="Beige">
+                        <Label Margin="16" HorizontalOptions="CenterAndExpand" Text="{Binding Telefone, StringFormat='Meu Fone: {0}'}" />
+                    </ContentView>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Rename"
+                                      IconImageSource="edit.png"
+                                      Clicked="OnItemRename"
+                                      CommandParameter="{Binding .}" />
+                            <MenuItem Text="Delete"
+                                      IconImageSource="delete.png"
+                                      IsDestructive="true"
+                                      Clicked="OnItemDelete"
+                                      CommandParameter="{Binding .}" />
+                        </ViewCell.ContextActions>
+
+                        <StackLayout Padding="16">
+                            <Label Text="{Binding Object.Title}"
+                                   MaxLines="3"
+                                   LineBreakMode="TailTruncation"
+                                   FontSize="Medium"
+                                   TextColor="Tomato" />
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Object.Status}"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       FontSize="Large"
+                                       TextColor="Tomato" />
+
+                                <Button Text="Cancel"
+                                        HorizontalOptions="EndAndExpand"
+                                        IsVisible="{Binding Object.CanCancel}"
+                                        Clicked="OnItemCancel"
+                                        CommandParameter="{Binding .}" />
+                                <Button Text="Begin"
+                                        HorizontalOptions="EndAndExpand"
+                                        IsVisible="{Binding Object.CanBegin}"
+                                        Clicked="OnItemBegin"
+                                        CommandParameter="{Binding .}" />
+                                <Button Text="Finish"
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Object.CanFinish}"
+                                        Clicked="OnItemFinish"
+                                        CommandParameter="{Binding .}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
