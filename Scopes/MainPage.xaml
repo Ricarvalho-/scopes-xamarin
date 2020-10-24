@@ -1,20 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Scopes.MainPage">
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36" />
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10" />
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0" />
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at " />
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold" />
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Scopes.MainPage"
+             Title="Scopes">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New scope"
+                     IconImageSource="add.png"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="OnAddClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ListView x:Name="ScopesListView"
+              ItemSelected="OnScopeSelected"
+              IsPullToRefreshEnabled="True"
+              Refreshing="OnScopesRefresh">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Object.Title}"
+                          TextColor="Tomato">
+                    <TextCell.ContextActions>
+                        <MenuItem Text="Rename"
+                                  IconImageSource="edit.png"
+                                  Clicked="OnItemRename"
+                                  CommandParameter="{Binding .}" />
+                        <MenuItem Text="Delete"
+                                  IconImageSource="delete.png"
+                                  IsDestructive="true"
+                                  Clicked="OnItemDelete"
+                                  CommandParameter="{Binding .}" />
+                    </TextCell.ContextActions>
+                </TextCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
